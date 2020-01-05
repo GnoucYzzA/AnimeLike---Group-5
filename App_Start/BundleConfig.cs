@@ -24,7 +24,8 @@ namespace AnimeLike
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/bootstrap.min.css",
+                      "~/Content/style.css"));
         }
     }
 }
