@@ -1,11 +1,12 @@
 ﻿using AnimeLike.Areas.Admin.Code;
 using AnimeLike.Areas.Admin.Models;
-using Model;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace AnimeLike.Areas.Admin.Controllers
 {
@@ -23,10 +24,11 @@ namespace AnimeLike.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(LoginModel model)
         {
-            var result = new AccountModel().Login(model.UserName, model.Password);
-            if (result && ModelState.IsValid)
+            //var result = new AccountModel().Login(model.UserName, model.Password);
+            if (Membership.ValidateUser(model.UserName, model.Password) && ModelState.IsValid)
             {
-                SessionHelper.SetSession(new UserSession() { UserName = model.UserName });
+                //SessionHelper.SetSession(new UserSession() { UserName = model.UserName });
+                FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                 return RedirectToAction("Index", "Manager");
             }
             else
@@ -34,6 +36,16 @@ namespace AnimeLike.Areas.Admin.Controllers
                 ModelState.AddModelError("", "Username or Password is incorrect.");
             }
             return View(model);
+        }
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Login");
+        }
+
+        public ActionResult Home()
+        {
+            return View();
         }
     }
 }

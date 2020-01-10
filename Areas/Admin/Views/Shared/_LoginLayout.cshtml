@@ -1,0 +1,31 @@
+﻿
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <!-- For IE 8 and older>
+    <!--[if lt IE 9]>
+        <script src="http://github.com/aFarkas/html5shiv/blob/master/dist/html5shiv.js"></script>
+    <![endif]-->
+
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/style.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-3.3.1.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/popper.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/jquery/jquery.min.js")"></script>
+</head>
+<body>
+    <div>
+        <!--Header-->
+        @Html.Partial("_Menu")
+        <!--Body-->
+        @RenderBody()
+    </div>
+    <!--Footer-->
+    @Html.Partial("_LoginFooter")
+</body>
+</html>
+

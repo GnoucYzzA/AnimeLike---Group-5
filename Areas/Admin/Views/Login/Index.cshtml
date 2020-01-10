@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Login";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_LoginLayout.cshtml";
 }
 @model AnimeLike.Areas.Admin.Models.LoginModel
 <div class="main">
@@ -10,12 +10,10 @@
             <div class="signin-content">
                 <div class="signin-image">
                     <figure><img src="~/Content/images/Signin.png" alt="Sign in image"></figure>
-
-                    @Html.ActionLink("Create an account", "Register", "Home", new { @class = "signup-image-link" })
                 </div>
 
                 <div class="signin-form">
-                    <h2 class="form-title">Sign in</h2>
+                    <h2 class="form-title">Administrator Area</h2>
                     @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "register-form", id = "login-form" }))
                     {
                         @Html.AntiForgeryToken()
@@ -38,16 +36,7 @@
                         </div>
                     }
                     <!--<form method="POST" class="register-form" id="login-form">-->
-
-
-                    <div class="social-login">
-                        <span class="social-label">Or login with</span>
-                        <ul class="socials">
-                            <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-                            <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-                            <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
-                        </ul>
-                    </div>
+            
                 </div>
             </div>
         </div>
